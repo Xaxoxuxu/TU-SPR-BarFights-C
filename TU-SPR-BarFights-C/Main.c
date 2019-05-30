@@ -16,6 +16,12 @@ typedef struct Drunk
 	int health;
 }Drunk;
 
+typedef struct argStruct
+{
+	Drunk* arg1;
+	Drunk* arg2;
+}argStruct;
+
 Drunk* createDrunk(char* name)
 {
 	Drunk* drunk = malloc(sizeof(Drunk));
@@ -25,12 +31,6 @@ Drunk* createDrunk(char* name)
 
 	return drunk;
 }
-
-typedef struct argStruct
-{
-	Drunk* arg1;
-	Drunk* arg2;
-}argStruct;
 
 void IncrementRounds()
 {
@@ -66,7 +66,7 @@ void createArray(Drunk*** arr, size_t size)
 	for (size_t i = 0; i < size; i++)
 	{
 		char name[DRUNK_NAME_LEN];
-		snprintf(name, _countof(name), "Drunk-%d", i + 1);
+		snprintf(name, _countof(name), "Drunk_%d", i + 1);
 		(*arr)[i] = createDrunk(name);
 	}
 }
@@ -98,12 +98,6 @@ void recreateArray(Drunk*** arr, size_t* currentArrSize)
 
 	*arr = tempArr;
 	(*currentArrSize) = alive;
-
-	//for (size_t i = 0; i < alive; i++)
-	//{
-	//	tempArr[i] = NULL;
-	//}
-	//tempArr = NULL;
 }
 
 void* fight(void* drunks)
