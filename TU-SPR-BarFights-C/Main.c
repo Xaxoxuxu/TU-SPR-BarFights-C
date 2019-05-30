@@ -149,7 +149,7 @@ void* fight(void* drunks)
 
 int main()
 {
-	// this size is dynamically changed multiple times
+	// this size is dynamically changed multiple times by recreateArray()
 	size_t currentArrSize = -1;
 
 	printf("Enter number of drunks: ");
@@ -193,9 +193,7 @@ int main()
 		Sleep(1 * 1000);
 	}
 
-	size_t winner = drunks[0]->health > 0 ? 0 : 1;
-
-	printf("The winner is: %s\n", drunks[winner]->name);
+	printf("The winner is: %s\n", drunks[0]->name);
 	printf("Total rounds: %ld\n", RoundsCnt);
 
 	for (size_t i = 0; i < currentArrSize; i++)
